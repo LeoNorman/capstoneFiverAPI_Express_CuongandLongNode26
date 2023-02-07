@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: "email",
         validate: {
           isEmail: {
@@ -22,19 +22,22 @@ module.exports = (sequelize) => {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       username: {
         type: DataTypes.STRING(50),
+        allowNull: true,
         field: "username",
       },
       age: {
         type: DataTypes.INTEGER,
+        allowNull: true,
         allowNull: false,
       },
       avatar: {
-        type: DataTypes.STRING
-      }
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
     },
     {
       tableName: "users",
