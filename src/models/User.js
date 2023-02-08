@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Sequelize } = require("sequelize");
 const bcrypt = require("bcrypt");
 
 module.exports = (sequelize) => {
@@ -9,6 +9,10 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
@@ -24,16 +28,25 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      username: {
-        type: DataTypes.STRING(50),
-        field: "username",
-      },
-      age: {
-        type: DataTypes.INTEGER,
+      phone: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
-      avatar: {
-        type: DataTypes.STRING
+      birthday: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      gender: {
+        type: Sequelize.ENUM("male", "female", "other"),
+      },
+      role: {
+        type: Sequelize.ENUM("user", "admin"),
+      },
+      skill: {
+        type: DataTypes.STRING,
+      },
+      certification: {
+        type: DataTypes.STRING,
       }
     },
     {
