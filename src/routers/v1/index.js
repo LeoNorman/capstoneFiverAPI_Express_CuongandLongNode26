@@ -2,6 +2,7 @@
 const express = require("express");
 const authRouter = require("./auth.router");
 const userRouter = require("./user.router");
+const commentRouter = require("./comment.router");
 
 const authorization = require("../../middlewares/authorization");
 
@@ -15,6 +16,8 @@ const v1 = express.Router();
 v1.use("/auth", authRouter);
 // Định nghĩa các routers cho users
 v1.use("/users", authorization, userRouter);
+// Định nghĩa các routers cho comments
+v1.use("/comments", authorization, commentRouter);
 
 
 module.exports = v1;
