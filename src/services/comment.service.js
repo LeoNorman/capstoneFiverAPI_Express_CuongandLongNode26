@@ -1,16 +1,9 @@
-const bcrypt = require("bcrypt");
-const { where } = require("sequelize");
-const configs = require("../config");
 const { AppError } = require("../helpers/error");
 const { Comment } = require("../models");
 
 const getComments = async () => {
     try {
-        const comments = await Comment.findAll(
-            //     {
-            //   include: "restaurants",
-            // }
-        );
+        const comments = await Comment.findAll();
         return comments;
     } catch (error) {
         console.error(error);
@@ -54,7 +47,8 @@ const createComment = async (data, userReq) => {
         const createdComment = await Comment.create({
             jobId: data.jobId,
             userId: userReq.id,
-            content: data.content
+            content: data.content,
+            ...data
         });
         return createdComment;
     } catch (error) {

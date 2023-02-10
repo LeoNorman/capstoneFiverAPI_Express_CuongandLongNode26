@@ -3,10 +3,11 @@ const express = require("express");
 const authRouter = require("./auth.router");
 const userRouter = require("./user.router");
 const commentRouter = require("./comment.router");
+const jobRouter = require("./job.router");
 
 const authorization = require("../../middlewares/authorization");
-
 const upload = require("../../middlewares/upload");
+
 
 
 // path v1: /api/v1
@@ -18,6 +19,8 @@ v1.use("/auth", authRouter);
 v1.use("/users", authorization, userRouter);
 // Định nghĩa các routers cho comments
 v1.use("/comments", authorization, commentRouter);
+// Định nghĩa các routers cho jobs
+v1.use("/jobs", authorization, jobRouter);
 
 
 module.exports = v1;

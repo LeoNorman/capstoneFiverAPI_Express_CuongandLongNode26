@@ -15,10 +15,6 @@ module.exports = (sequelize) => {
       },
       rating: {
         type: DataTypes.INTEGER,
-        validate: {
-            min: 1,
-            max: 5,
-        }
       },
       price: {
         type: DataTypes.INTEGER,
