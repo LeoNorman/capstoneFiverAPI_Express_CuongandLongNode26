@@ -1,64 +1,64 @@
 const { response } = require("../helpers/response");
-const commentService = require("../services/comment.service");
+const jobService = require("../services/job.service");
 
-const getComments = () => {
+const getJobs = () => {
   return async (req, res, next) => {
     try {
-      const comments = await commentService.getComments();
-      res.status(200).json(response(comments));
+      const jobs = await jobService.getJobs();
+      res.status(200).json(response(jobs));
     } catch (error) {
       next(error);
     }
   };
 };
 
-const getCommentByJobId = () => {
+const getJobById = () => {
   return async (req, res, next) => {
     try {
-      const { jobId } = req.params;
-      const comment = await commentService.getCommentByJobId(jobId);
-      res.status(200).json(response(comment));
+      const { id } = req.params;
+      const job = await jobService.getJobById(id);
+      res.status(200).json(response(job));
     } catch (error) {
       next(error);
     }
   };
 };
 
-const createComment = () => {
+const createJob = () => {
   return async (req, res, next) => {
     try {
       const data = req.body;
       const { user } = res.locals;
-      const createdComment = await commentService.createComment(data, user);
-      res.status(201).json(response(createdComment));
+      const createdJob = await jobService.createJob(data, user);
+      res.status(201).json(response(createdJob));
     } catch (error) {
       next(error);
     }
   };
 };
 
-const updateComment = () => {
+const updateJob = () => {
   return async (req, res, next) => {
     try {
       const { id } = req.params;
       const data = req.body;
       const { user } = res.locals
 
-      const updatedComment = await commentService.updateComment(id, data, user);
+      const updatedJob = await jobService.updateJob(id, data, user);
 
-      res.status(200).json(response(updatedComment));
+      res.status(200).json(response(updatedJob));
     } catch (error) {
       next(error);
     }
   };
 };
 
-const deleteComment = () => {
+const deleteJob = () => {
   return async (req, res, next) => {
     try {
       const { id } = req.params;
       const { user } = res.locals
-      const DeletedComment = await commentService.deleteComment(id, user);
+      const DeletedJob = await jobService.deleteJob(id, user);
       res.status(204).json(response(true));
     } catch (error) {
       // res.status(500).json({ error: error.message });
@@ -68,9 +68,9 @@ const deleteComment = () => {
 };
 
 module.exports = {
-  getComments,
-  getCommentByJobId,
-  createComment,
-  updateComment,
-  deleteComment,
+  getJobs,
+  createJob,
+  updateJob,
+  deleteJob,
+  getJobById,
 };
