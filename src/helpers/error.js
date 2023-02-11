@@ -11,7 +11,7 @@ const handleErrors = (err, req, res, next) => {
   // Nếu err là instance của AppError, nghĩa là err là mình đã biết và đã xử lý
   // Nếu là những lỗi không phải là instance của AppError, thì có thể vì một lý do nào đó nó bị lỗi mà mình chưa biết đc
   if (!(err instanceof AppError)) {
-    err = new AppError(500, "Internal Server");
+    err = new AppError(500, err.message);
   }
 
   const { message, statusCode } = err;

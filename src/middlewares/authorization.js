@@ -7,6 +7,9 @@ const { User } = require("../models");
 
 const extractTokenFromHeader = (headers) => {
   const bearerToken = headers.authorization; // Bearer abcxyz
+  if (!bearerToken) {
+    throw new AppError(401, "UnAuthorization");
+  }
   const parts = bearerToken.split(" "); // ["Bearer", "abcxyz"]
 
   if (parts.length !== 2 || parts[0] !== "Bearer" || !parts[1].trim()) {
@@ -29,7 +32,6 @@ const authorization = async (req, res, next) => {
 
     // Lưu trữ thông tin user vào res.locals, để có thể truy cập ở các middleware hoặc controller tiếp theo
     res.locals.user = user;
-
     next();
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError) {

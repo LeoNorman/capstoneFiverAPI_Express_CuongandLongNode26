@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
         unique: "email",
         validate: {
           isEmail: {
@@ -27,6 +27,14 @@ module.exports = (sequelize) => {
       password: {
         type: DataTypes.STRING,
         allowNull: true,
+        set(value) {
+          // Không được lưu plaintext password trực tiếp xuống DB
+          // Ta cần hash password bằng thư viện bcrypt
+          const salt = bcrypt.genSaltSync();
+          const hashedPassword = bcrypt.hashSync(value, salt);
+
+          this.setDataValue("password", hashedPassword);
+        },
       },
       phone: {
         type: DataTypes.STRING,
@@ -36,18 +44,23 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      avatar: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       gender: {
         type: Sequelize.ENUM("male", "female", "other"),
       },
       role: {
         type: Sequelize.ENUM("user", "admin"),
+        defaultValue: "user",
       },
       skill: {
         type: DataTypes.STRING,
       },
       certification: {
         type: DataTypes.STRING,
-      }
+      },
     },
     {
       tableName: "users",
