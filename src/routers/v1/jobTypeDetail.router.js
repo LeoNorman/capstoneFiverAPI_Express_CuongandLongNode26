@@ -1,17 +1,13 @@
 const express = require("express");
-const jobTypeDetailController = require("../../controllers/jobTypeDetail.controller");
-const authorization = require("../../middlewares/authorization");
-const requiredRole = require("../../middlewares/requireRole");
-const upload = require("../../middlewares/upload");
+const jobTypeDetailController = require("../../controllers/jobTypeDetail.controller")
 
-const jobTypeDetailRouter = express.Router();
+const jobTypeDetailRouter = express.Router()
 
-jobTypeDetailRouter.post(
-  "/",
-  authorization,
-  requiredRole("admin"),
-  upload.single("file"),
-  jobTypeDetailController.createJobTypeDetail()
-);
+jobTypeDetailRouter.get("/", jobTypeDetailController.getJobTypeDetails())
+jobTypeDetailRouter.post("/", jobTypeDetailController.createJobTypeDetail())
+jobTypeDetailRouter.put("/:id", jobTypeDetailController.updateJobTypeDetail());
+jobTypeDetailRouter.delete("/:id", jobTypeDetailController.deleteJobTypeDetail());
+jobTypeDetailRouter.get("/:id", jobTypeDetailController.getJobTypeDetailById());
 
-module.exports = jobTypeDetailRouter;
+module.exports = jobTypeDetailRouter
+

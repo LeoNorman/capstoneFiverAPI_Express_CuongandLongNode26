@@ -1,27 +1,131 @@
 const { AppError } = require("../helpers/error");
-const { JobTypeDetail } = require("../models");
-const { Op } = require("sequelize");
+const { JobTypeDetail, JobType } = require("../models");
 
-const createJobTypeDetail = async (data) => {
-  try {
-    const checkJobTypeDetail = await JobTypeDetail.findOne({
-      where: {
-        name: data.name,
-      },
-    });
-
-    if (checkJobTypeDetail) {
-      throw new AppError(400, "job type detail is existed");
+const getJobTypeDetails = async () => {
+    try {
+        const jobTypeDetails = await JobTypeDetail.findAll();
+        return jobTypeDetails;
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
+};
 
-    const createdJobTypeDetail = await JobTypeDetail.create(data);
-    return createdJobTypeDetail;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+const createJobTypeDetail = async (data, userReq) => {
+    try {
+        const jobTypeDetail = await JobTypeDetail.findOne({
+            where: {
+                name: data.name
+            },
+        });
+
+        const checkJobType = await JobType.findOne({
+            where: {
+                id: data.jobTypeId
+            }
+        })
+
+        if (!checkJobType) {
+            throw new AppError(401, "Job type not found");
+        }
+
+        // name đã tồn tại trong DB
+        if (jobTypeDetail) {
+            throw new AppError(400, "name is existed");
+        }
+
+        const createdJob = await JobTypeDetail.create(data);
+        return createdJob;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+const updateJobTypeDetail = async (id, data) => {
+    try {
+        const jobTypeDetail = await JobTypeDetail.findOne({
+            where: {
+                id,
+            }
+        })
+
+        const jobType = await JobType.findOne({
+            where: {
+                id: data.jobTypeId,
+            },
+        });
+
+        const isNameExisted = await JobTypeDetail.findOne({
+            where: {
+                name: data.name
+            }
+        })
+
+        if (!jobTypeDetail) {
+            throw new AppError(400, "Job Type Detail not found");
+        }
+
+        if (!jobType) {
+            throw new AppError(400, "Job Type not found");
+        }
+
+        if (isNameExisted && isNameExisted.id != id) {
+            throw new AppError(401, "name already exists");
+        }
+
+        jobTypeDetail.set(data);
+        await jobTypeDetail.save();
+
+        return jobTypeDetail;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+const deleteJobTypeDetail = async (id) => {
+    try {
+        const jobTypeDetail = await JobTypeDetail.findOne({
+            where: {
+                id,
+            },
+        });
+
+        if (!jobTypeDetail) {
+            throw new AppError(400, "Job Type Detail not found");
+        }
+
+        await JobTypeDetail.destroy({ where: { id } });
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+const getJobTypeDetailById = async (id) => {
+    try {
+        const jobTypeDetail = await JobTypeDetail.findAll({
+            where: {
+                id,
+            }
+        });
+
+        if (jobTypeDetail.length === 0) {
+            throw new AppError(404, "job type detail not found");
+        }
+
+        return jobTypeDetail;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
 };
 
 module.exports = {
-  createJobTypeDetail,
+    getJobTypeDetails,
+    createJobTypeDetail,
+    updateJobTypeDetail,
+    deleteJobTypeDetail,
+    getJobTypeDetailById,
 };
