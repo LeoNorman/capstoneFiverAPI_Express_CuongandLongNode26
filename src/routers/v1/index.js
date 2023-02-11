@@ -2,14 +2,15 @@
 const express = require("express");
 const authRouter = require("./auth.router");
 const userRouter = require("./user.router");
+const jobTypeRouter = require("./jobType.router");
+const hireJobRouter = require("./hire-job.router");
 const commentRouter = require("./comment.router");
 const jobRouter = require("./job.router");
+const jobTypeDetailRouter = require("./jobTypeDetail.router");
 
 const authorization = require("../../middlewares/authorization");
 const upload = require("../../middlewares/upload");
 const jobTypeDetailRouter = require("./jobTypeDetail.router");
-
-
 
 // path v1: /api/v1
 const v1 = express.Router();

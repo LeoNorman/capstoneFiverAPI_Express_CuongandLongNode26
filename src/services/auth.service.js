@@ -10,7 +10,6 @@ const login = async (credentials) => {
       where: { email },
       attributes: { include: ["password"] },
     });
-    
 
     if (!user) {
       throw new AppError(400, "email or password invalid");

@@ -10,3 +10,4 @@ jobTypeDetailRouter.delete("/:id", jobTypeDetailController.deleteJobTypeDetail()
 jobTypeDetailRouter.get("/:id", jobTypeDetailController.getJobTypeDetailById());
 
 module.exports = jobTypeDetailRouter
+
