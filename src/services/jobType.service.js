@@ -17,7 +17,7 @@ const findAllWithCondition = async (paging, filter) => {
 
     // return rows;
     return {
-      users: rows,
+      jobType: rows,
       paging: {
         count,
         page: paging.page || 1,

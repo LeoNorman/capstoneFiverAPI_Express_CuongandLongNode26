@@ -8,7 +8,12 @@ const jobTypeRouter = express.Router();
 jobTypeRouter.get("/", jobTypeController.getJobType());
 jobTypeRouter.get("/get-jobType-pagination", jobTypeController.getJobType());
 jobTypeRouter.get("/:id", jobTypeController.getJobTypeByID());
-jobTypeRouter.put("/:id", authorization, jobTypeController.updateJobType());
+jobTypeRouter.put(
+  "/:id",
+  authorization,
+  requiredRole("admin"),
+  jobTypeController.updateJobType()
+);
 jobTypeRouter.post(
   "/",
   authorization,

@@ -24,23 +24,11 @@ const getUsers = () => {
   };
 };
 
-const getUserByID = () => {
+const getUserByIdorName = () => {
   return async (req, res, next) => {
     try {
       const id = req.params;
       const user = await userService.findOneWithCondition(id);
-      res.status(200).json(response(user));
-    } catch (error) {
-      next(error);
-    }
-  };
-};
-
-const getUserByName = () => {
-  return async (req, res, next) => {
-    try {
-      const name = req.params;
-      const user = await userService.findOneWithCondition(name);
       res.status(200).json(response(user));
     } catch (error) {
       next(error);
@@ -133,8 +121,7 @@ const uploadAvtar = () => {
 
 module.exports = {
   getUsers,
-  getUserByID,
-  getUserByName,
+  getUserByIdorName,
   createUser,
   updateUser,
   deleteUser,
