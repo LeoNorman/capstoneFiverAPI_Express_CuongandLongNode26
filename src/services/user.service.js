@@ -1,28 +1,42 @@
-const bcrypt = require("bcrypt");
-const configs = require("../config");
 const { AppError } = require("../helpers/error");
 const { User } = require("../models");
+const { Op } = require("sequelize");
+const fs = require("fs");
 
-const saltRounds = Number(configs.SALT_ROUNDS);
-
-const getUsers = async () => {
+const findAllWithCondition = async (paging, filter) => {
   try {
-    const users = await User.findAll(
-    //     {
-    //   include: "restaurants",
-    // }
-    );
-    return users;
+    const { count, rows } = await User.findAndCountAll({
+      where: {
+        name: {
+          [Op.substring]: filter.name || "",
+        },
+        role: {
+          [Op.substring]: filter.role || "",
+        },
+      },
+      offset: (paging.page - 1) * paging.pageSize || 0,
+      limit: +paging.pageSize || null,
+    });
+
+    // return rows;
+    return {
+      users: rows,
+      paging: {
+        count,
+        page: paging.page || 1,
+        pageSize: paging.pageSize,
+      },
+    };
   } catch (error) {
     console.error(error);
     throw error;
   }
 };
 
-const getUserByID = async (id) => {
+const findOneWithCondition = async (condition) => {
   try {
-    const user = await User.findByPk(id, {
-      include: "restaurants",
+    const user = await User.findOne({
+      where: condition,
     });
 
     if (!user) {
@@ -49,14 +63,9 @@ const createUser = async (data) => {
       throw new AppError(400, "Email is existed");
     }
 
-    // Ví dụ trong trường hợp admin thêm user, chỉ cần dùng email, ta cần phải tạo một mật khẩu ngẩu nhiên
     if (!data.password) {
       data.password = Math.random().toString(36).substring(2);
-      // Gửi email về cho user mật khẩu này
     }
-
-    //hashpass
-    data.password = bcrypt.hashSync(data.password, saltRounds);
 
     const createdUser = await User.create(data);
     return createdUser;
@@ -66,39 +75,37 @@ const createUser = async (data) => {
   }
 };
 
-const updateUser = async (id, data, userReq) => {
+const updateUser = async (data, id) => {
   try {
-    const user = await User.findOne({
-      where: {
-        id: id,
-      },
-    });
-
+    const user = await User.findByPk(id);
 
     if (!user) {
       throw new AppError(400, "User not found");
     }
 
-    if(userReq.id != id) {
-      console.log("id: ", id);
-      console.log("userReq.id : ", userReq.id );
-      throw new AppError(403, "Can't update someone else's account");
+    if (user.avatar && data.avatar) {
+      fs.unlinkSync(user.avatar);
     }
 
-    const emailExisted = await User.findOne({
+    if (data.email) {
+      const checkEmail = await User.findOne({
+        where: {
+          email: data.email,
+        },
+      });
+      if (checkEmail) {
+        throw new AppError(400, "Email is existed");
+      }
+    }
+
+    console.log("data: ", data);
+    const updatedUser = await User.update(data, {
       where: {
-        email: data.email,
+        id,
       },
     });
 
-    if(emailExisted && id != emailExisted.id ) {
-      throw new AppError(401, "Email is existed");
-    }
-
-    user.set(data);
-    await user.save();
-
-    return user;
+    return updatedUser;
   } catch (error) {
     console.error(error);
     throw error;
@@ -107,17 +114,17 @@ const updateUser = async (id, data, userReq) => {
 
 const deleteUser = async (id) => {
   try {
-    const user = await User.findOne({
-      where: {
-        id,
-      },
-    });
+    const user = await User.findByPk(id);
 
     if (!user) {
       throw new AppError(400, "User not found");
     }
+    if (user.avatar) {
+      fs.unlinkSync(user.avatar);
+    }
 
     await User.destroy({ where: { id } });
+    return "user deleted";
   } catch (error) {
     console.error(error);
     throw error;
@@ -125,8 +132,8 @@ const deleteUser = async (id) => {
 };
 
 module.exports = {
-  getUsers,
-  getUserByID,
+  findAllWithCondition,
+  findOneWithCondition,
   createUser,
   updateUser,
   deleteUser,

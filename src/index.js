@@ -1,13 +1,15 @@
 const express = require("express");
-const { sequelize } = require("./models");
 const { handleErrors } = require("./helpers/error");
+const { sequelize } = require("./models");
 
 const app = express();
+
 app.use(express.json());
-app.use(express.static("."))
+app.use(express.static("."));
 
 // Sync cái model của sequelize với DB
 sequelize.sync({ alter: true });
+
 const v1 = require("./routers/v1");
 app.use("/api/v1", v1);
 
@@ -15,4 +17,4 @@ app.use("/api/v1", v1);
 // Phải được đặt bên dưới các routers
 app.use(handleErrors);
 
-app.listen(5000);
+app.listen("5000");
