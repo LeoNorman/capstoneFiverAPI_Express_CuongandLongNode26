@@ -7,6 +7,7 @@ const jobRouter = require("./job.router");
 
 const authorization = require("../../middlewares/authorization");
 const upload = require("../../middlewares/upload");
+const jobTypeDetailRouter = require("./jobTypeDetail.router");
 
 
 
@@ -21,6 +22,8 @@ v1.use("/users", authorization, userRouter);
 v1.use("/comments", authorization, commentRouter);
 // Định nghĩa các routers cho jobs
 v1.use("/jobs", authorization, jobRouter);
+// Định nghĩa các routers cho jobTypeDetails
+v1.use("/jobTypeDetails", authorization, jobTypeDetailRouter);
 
 
 module.exports = v1;
