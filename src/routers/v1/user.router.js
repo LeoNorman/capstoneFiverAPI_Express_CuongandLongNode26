@@ -8,8 +8,8 @@ const userRouter = express.Router();
 
 userRouter.get("/", userController.getUsers());
 userRouter.get("/get-user-pagination", userController.getUsers());
-userRouter.get("/:id", userController.getUserByID());
-userRouter.get("/search/:name", userController.getUserByName());
+userRouter.get("/:id", userController.getUserByIdorName());
+userRouter.get("/search/:name", userController.getUserByIdorName());
 userRouter.post(
   "/",
   authorization,
