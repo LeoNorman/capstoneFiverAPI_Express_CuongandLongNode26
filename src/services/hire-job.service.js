@@ -8,12 +8,10 @@ const findAllWithCondition = async (paging) => {
     const { count, rows } = await HireJob.findAndCountAll({
       offset: (paging.page - 1) * paging.pageSize || 0,
       limit: +paging.pageSize || null,
-      //   order: [["id", "ASC"]],
     });
 
-    // return rows;
     return {
-      users: rows,
+      hiredJob: rows,
       paging: {
         count,
         page: paging.page || 1,

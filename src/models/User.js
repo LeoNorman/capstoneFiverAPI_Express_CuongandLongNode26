@@ -39,10 +39,24 @@ module.exports = (sequelize) => {
       phone: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isNumeric: {
+            msg: "must be number",
+          },
+          len: {
+            args: [10, 10],
+            msg: "phonenumber must be 10 digits",
+          },
+        },
       },
       birthday: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isDate: {
+            msg: "birthday must be date format MM/DD/YYYY",
+          },
+        },
       },
       avatar: {
         type: DataTypes.STRING,

@@ -16,6 +16,7 @@ const findAllWithCondition = async (paging, filter) => {
       },
       offset: (paging.page - 1) * paging.pageSize || 0,
       limit: +paging.pageSize || null,
+      include: "jobs",
     });
 
     // return rows;
@@ -37,6 +38,7 @@ const findOneWithCondition = async (condition) => {
   try {
     const user = await User.findOne({
       where: condition,
+      include: "jobs",
     });
 
     if (!user) {

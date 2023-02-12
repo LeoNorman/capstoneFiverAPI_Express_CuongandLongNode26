@@ -28,7 +28,8 @@ const createJobTypeDetail = () => {
   return async (req, res, next) => {
     try {
       const data = req.body;
-      const createdJobTypeDetail = await jobTypeDetailService.createJobTypeDetail(data);
+      const createdJobTypeDetail =
+        await jobTypeDetailService.createJobTypeDetail(data);
       res.status(201).json(response(createdJobTypeDetail));
     } catch (error) {
       next(error);
@@ -42,7 +43,8 @@ const updateJobTypeDetail = () => {
       const { id } = req.params;
       const data = req.body;
 
-      const updatedJobTypeDetail = await jobTypeDetailService.updateJobTypeDetail(id, data);
+      const updatedJobTypeDetail =
+        await jobTypeDetailService.updateJobTypeDetail(id, data);
 
       res.status(200).json(response(updatedJobTypeDetail));
     } catch (error) {
@@ -55,7 +57,8 @@ const deleteJobTypeDetail = () => {
   return async (req, res, next) => {
     try {
       const { id } = req.params;
-      const DeletedJobTypeDetail = await jobTypeDetailService.deleteJobTypeDetail(id);
+      const DeletedJobTypeDetail =
+        await jobTypeDetailService.deleteJobTypeDetail(id);
       res.status(204).json(response(true));
     } catch (error) {
       // res.status(500).json({ error: error.message });
