@@ -7,6 +7,11 @@ const hireJobRouter = express.Router();
 
 hireJobRouter.get("/", authorization, hireJobController.getHiredJob());
 hireJobRouter.get(
+  "/get-hiredJob-pagination",
+  authorization,
+  hireJobController.getHiredJob()
+);
+hireJobRouter.get(
   "/get-hiredjob-by-user",
   authorization,
   hireJobController.getHiredJobByUserId()

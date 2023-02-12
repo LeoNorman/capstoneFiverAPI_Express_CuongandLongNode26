@@ -13,6 +13,7 @@ const findAllWithCondition = async (paging, filter) => {
       offset: (paging.page - 1) * paging.pageSize || 0,
       limit: +paging.pageSize || null,
       order: [["id", "ASC"]],
+      include: "jobTypeDetails",
     });
 
     // return rows;
