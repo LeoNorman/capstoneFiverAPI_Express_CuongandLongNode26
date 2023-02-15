@@ -21,7 +21,7 @@ v1.use("/users", authorization, userRouter);
 // Định nghĩa các routers cho comments
 v1.use("/comments", authorization, commentRouter);
 // Định nghĩa các routers cho jobs
-v1.use("/jobs", authorization, jobRouter);
+v1.use("/jobs", authorization, jobRouter)
 // Định nghĩa các routers cho jobTypeDetails
 v1.use("/jobTypeDetails", authorization, jobTypeDetailRouter);
 
