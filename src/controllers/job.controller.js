@@ -1,3 +1,4 @@
+const { AppError } = require("../helpers/error");
 const { response } = require("../helpers/response");
 const jobService = require("../services/job.service");
 
@@ -5,6 +6,21 @@ const getJobs = () => {
   return async (req, res, next) => {
     try {
       const jobs = await jobService.getJobs();
+      res.status(200).json(response(jobs));
+    } catch (error) {
+      next(error);
+    }
+  };
+};
+
+const getJobsWithPagination = () => {
+  return async (req, res, next) => {
+    try {
+      const paging = {
+        page: req.query.page,
+        pageSize: req.query.pageSize,
+      };
+      const jobs = await jobService.getJobsWithPagination(paging);
       res.status(200).json(response(jobs));
     } catch (error) {
       next(error);
@@ -42,7 +58,7 @@ const updateJob = () => {
     try {
       const { id } = req.params;
       const data = req.body;
-      const { user } = res.locals
+      const { user } = res.locals;
 
       const updatedJob = await jobService.updateJob(id, data, user);
 
@@ -57,7 +73,7 @@ const deleteJob = () => {
   return async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { user } = res.locals
+      const { user } = res.locals;
       const DeletedJob = await jobService.deleteJob(id, user);
       res.status(204).json(response(true));
     } catch (error) {
@@ -76,15 +92,17 @@ const getMenuJobType = () => {
       next(error);
     }
   };
-}
+};
 
 const getJobTypeDetailByJobTypeId = () => {
   return async (req, res, next) => {
     try {
       const { jobTypeId } = req.params;
-      const jobTypeDetail = await jobService.getJobTypeDetailByJobTypeId(jobTypeId);
-      if(!jobTypeDetail) {
-        throw new AppError(404, "Not Found")
+      const jobTypeDetail = await jobService.getJobTypeDetailByJobTypeId(
+        jobTypeId
+      );
+      if (!jobTypeDetail) {
+        throw new AppError(404, "Not Found");
       }
       res.status(200).json(response(jobTypeDetail));
     } catch (error) {
@@ -96,10 +114,10 @@ const getJobTypeDetailByJobTypeId = () => {
 const getJobByJobTypeDetailId = () => {
   return async (req, res, next) => {
     try {
-      const {jobTypeDetailId} = req.params;
+      const { jobTypeDetailId } = req.params;
       const jobs = await jobService.getJobByJobTypeDetailId(jobTypeDetailId);
-      if(!jobs) {
-        throw new AppError(404, "Not Found")
+      if (!jobs) {
+        throw new AppError(404, "Not Found");
       }
       res.status(200).json(response(jobs));
     } catch (error) {
@@ -108,8 +126,34 @@ const getJobByJobTypeDetailId = () => {
   };
 };
 
+const uploadJobImage = () => {
+  return async (req, res, next) => {
+    try {
+      const { jobId } = req.params;
+      const data = req.body;
+      const file = req.file;
+      if (file) {
+        if (file.mimetype !== "image/jpeg") {
+          fs.unlinkSync(file.path);
+          throw new AppError(403, "only image accepted");
+        }
+        file.path = file.path.replace(/\\/g, "/"); // Đối với window
+        data.image = file.path;
+
+        const updatedJobImage = await jobService.uploadJobImage(data, jobId);
+        res.status(200).json(response(updatedJobImage));
+      } else {
+        throw new AppError(400, "Please upload a file");
+      }
+    } catch (error) {
+      next(error);
+    }
+  };
+};
+
 module.exports = {
   getJobs,
+  getJobsWithPagination,
   createJob,
   updateJob,
   deleteJob,
@@ -117,4 +161,5 @@ module.exports = {
   getMenuJobType,
   getJobTypeDetailByJobTypeId,
   getJobByJobTypeDetailId,
+  uploadJobImage,
 };

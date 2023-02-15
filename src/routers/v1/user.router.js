@@ -30,10 +30,10 @@ userRouter.delete(
   userController.deleteUser()
 );
 userRouter.post(
-  "/",
+  "/upload-avatar",
   authorization,
   upload.single("file"),
-  userController.uploadAvtar()
+  userController.uploadAvatar()
 );
 
 module.exports = userRouter;

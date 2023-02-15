@@ -11,6 +11,26 @@ const getJobTypeDetails = async () => {
   }
 };
 
+const getJobTypeDetailsWithPagination = async (paging) => {
+  try {
+    const { count, rows } = await JobTypeDetail.findAndCountAll({
+      offset: (paging.page - 1) * paging.pageSize || 0,
+      limit: +paging.pageSize || null,
+    });
+    return {
+      jobtypedetails: rows,
+      paging: {
+        count,
+        page: paging.page || 1,
+        pageSize: paging.pageSize,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 const createJobTypeDetail = async (data, userReq) => {
   try {
     const jobTypeDetail = await JobTypeDetail.findOne({
@@ -124,6 +144,7 @@ const getJobTypeDetailById = async (id) => {
 
 module.exports = {
   getJobTypeDetails,
+  getJobTypeDetailsWithPagination,
   createJobTypeDetail,
   updateJobTypeDetail,
   deleteJobTypeDetail,

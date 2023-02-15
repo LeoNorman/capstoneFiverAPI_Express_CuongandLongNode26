@@ -98,10 +98,11 @@ const deleteUser = () => {
   };
 };
 
-const uploadAvtar = () => {
+const uploadAvatar = () => {
   return async (req, res, next) => {
     try {
       const { user } = res.locals;
+      const data = req.body;
       const file = req.file;
       if (file) {
         if (file.mimetype !== "image/jpeg") {
@@ -109,7 +110,10 @@ const uploadAvtar = () => {
           throw new AppError(403, "only image accepted");
         }
         file.path = file.path.replace(/\\/g, "/"); // Đối với window
-        user.avatar = file.path;
+
+        data.avatar = file.path;
+        await userService.updateUser(data, user.id);
+        res.status(204).json(response("Upload OK"));
       }
 
       throw new AppError(400, "Please upload a file");
@@ -125,5 +129,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
-  uploadAvtar,
+  uploadAvatar,
 };
