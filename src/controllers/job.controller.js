@@ -12,6 +12,21 @@ const getJobs = () => {
   };
 };
 
+const getJobsWithPagination = () => {
+  return async (req, res, next) => {
+    try {
+      const paging = {
+        page: req.query.page,
+        pageSize: req.query.pageSize,
+      };
+      const jobs = await jobService.getJobsWithPagination(paging);
+      res.status(200).json(response(jobs));
+    } catch (error) {
+      next(error);
+    }
+  };
+};
+
 const getJobById = () => {
   return async (req, res, next) => {
     try {
@@ -42,7 +57,7 @@ const updateJob = () => {
     try {
       const { id } = req.params;
       const data = req.body;
-      const { user } = res.locals
+      const { user } = res.locals;
 
       const updatedJob = await jobService.updateJob(id, data, user);
 
@@ -57,7 +72,7 @@ const deleteJob = () => {
   return async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { user } = res.locals
+      const { user } = res.locals;
       const DeletedJob = await jobService.deleteJob(id, user);
       res.status(204).json(response(true));
     } catch (error) {
@@ -76,15 +91,17 @@ const getMenuJobType = () => {
       next(error);
     }
   };
-}
+};
 
 const getJobTypeDetailByJobTypeId = () => {
   return async (req, res, next) => {
     try {
       const { jobTypeId } = req.params;
-      const jobTypeDetail = await jobService.getJobTypeDetailByJobTypeId(jobTypeId);
-      if(!jobTypeDetail) {
-        throw new AppError(404, "Not Found")
+      const jobTypeDetail = await jobService.getJobTypeDetailByJobTypeId(
+        jobTypeId
+      );
+      if (!jobTypeDetail) {
+        throw new AppError(404, "Not Found");
       }
       res.status(200).json(response(jobTypeDetail));
     } catch (error) {
@@ -96,10 +113,10 @@ const getJobTypeDetailByJobTypeId = () => {
 const getJobByJobTypeDetailId = () => {
   return async (req, res, next) => {
     try {
-      const {jobTypeDetailId} = req.params;
+      const { jobTypeDetailId } = req.params;
       const jobs = await jobService.getJobByJobTypeDetailId(jobTypeDetailId);
-      if(!jobs) {
-        throw new AppError(404, "Not Found")
+      if (!jobs) {
+        throw new AppError(404, "Not Found");
       }
       res.status(200).json(response(jobs));
     } catch (error) {
@@ -110,6 +127,7 @@ const getJobByJobTypeDetailId = () => {
 
 module.exports = {
   getJobs,
+  getJobsWithPagination,
   createJob,
   updateJob,
   deleteJob,
