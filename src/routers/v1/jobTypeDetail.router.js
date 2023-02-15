@@ -4,6 +4,10 @@ const jobTypeDetailController = require("../../controllers/jobTypeDetail.control
 const jobTypeDetailRouter = express.Router();
 
 jobTypeDetailRouter.get("/", jobTypeDetailController.getJobTypeDetails());
+jobTypeDetailRouter.get(
+  "/pagination",
+  jobTypeDetailController.getJobTypeDetailsWithPagination()
+);
 jobTypeDetailRouter.post("/", jobTypeDetailController.createJobTypeDetail());
 jobTypeDetailRouter.put("/:id", jobTypeDetailController.updateJobTypeDetail());
 jobTypeDetailRouter.delete(

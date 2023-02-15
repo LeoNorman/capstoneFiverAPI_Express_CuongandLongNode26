@@ -12,6 +12,22 @@ const getJobTypeDetails = () => {
   };
 };
 
+const getJobTypeDetailsWithPagination = () => {
+  return async (req, res, next) => {
+    try {
+      const paging = {
+        page: req.query.page,
+        pageSize: req.query.pageSize,
+      };
+      const jobsTypeDetails =
+        await jobTypeDetailService.getJobTypeDetailsWithPagination(paging);
+      res.status(200).json(response(jobsTypeDetails));
+    } catch (error) {
+      next(error);
+    }
+  };
+};
+
 const getJobTypeDetailById = () => {
   return async (req, res, next) => {
     try {
@@ -69,6 +85,7 @@ const deleteJobTypeDetail = () => {
 
 module.exports = {
   getJobTypeDetails,
+  getJobTypeDetailsWithPagination,
   createJobTypeDetail,
   updateJobTypeDetail,
   deleteJobTypeDetail,

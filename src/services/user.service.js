@@ -133,6 +133,43 @@ const deleteUser = async (id) => {
   }
 };
 
+const uploadAvatar = async (data, id) => {
+  try {
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      throw new AppError(400, "User not found");
+    }
+
+    if (user.avatar && data.avatar) {
+      fs.unlinkSync(user.avatar);
+    }
+
+    if (data.email) {
+      const checkEmail = await User.findOne({
+        where: {
+          email: data.email,
+        },
+      });
+      if (checkEmail) {
+        throw new AppError(400, "Email is existed");
+      }
+    }
+
+    console.log("data: ", data);
+    const updatedUser = await User.update(data, {
+      where: {
+        id,
+      },
+    });
+
+    return updatedUser;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 module.exports = {
   findAllWithCondition,
   findOneWithCondition,

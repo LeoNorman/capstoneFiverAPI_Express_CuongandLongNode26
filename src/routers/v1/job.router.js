@@ -1,5 +1,6 @@
 const express = require("express");
 const jobController = require("../../controllers/job.controller");
+const upload = require("../../middlewares/upload");
 
 const jobRouter = express.Router();
 
@@ -17,6 +18,11 @@ jobRouter.get(
 jobRouter.get(
   "/getJobByJobTypeDetailId/:jobTypeDetailId",
   jobController.getJobByJobTypeDetailId()
+);
+jobRouter.post(
+  "/upload-JobImage/:jobId",
+  upload.single("file"),
+  jobController.uploadJobImage()
 );
 
 module.exports = jobRouter;

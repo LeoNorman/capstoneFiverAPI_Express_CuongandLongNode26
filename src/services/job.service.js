@@ -18,7 +18,7 @@ const getJobsWithPagination = async (paging) => {
       limit: +paging.pageSize || null,
     });
     return {
-      users: rows,
+      jobs: rows,
       paging: {
         count,
         page: paging.page || 1,
@@ -218,6 +218,25 @@ const getJobByJobTypeDetailId = async (id) => {
   }
 };
 
+const uploadJobImage = async (data, id) => {
+  try {
+    const job = await Job.findByPk(id);
+    console.log("job: ", job);
+    if (!job) {
+      throw new AppError(400, "Job not found");
+    }
+
+    console.log("data: ", data);
+    job.set(data);
+    await job.save();
+
+    return job;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 module.exports = {
   getJobs,
   getJobsWithPagination,
@@ -228,4 +247,5 @@ module.exports = {
   getMenuJobType,
   getJobTypeDetailByJobTypeId,
   getJobByJobTypeDetailId,
+  uploadJobImage,
 };

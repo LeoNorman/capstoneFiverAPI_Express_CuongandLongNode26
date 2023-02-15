@@ -1,3 +1,4 @@
+const { AppError } = require("../helpers/error");
 const { response } = require("../helpers/response");
 const jobService = require("../services/job.service");
 
@@ -125,6 +126,31 @@ const getJobByJobTypeDetailId = () => {
   };
 };
 
+const uploadJobImage = () => {
+  return async (req, res, next) => {
+    try {
+      const { jobId } = req.params;
+      const data = req.body;
+      const file = req.file;
+      if (file) {
+        if (file.mimetype !== "image/jpeg") {
+          fs.unlinkSync(file.path);
+          throw new AppError(403, "only image accepted");
+        }
+        file.path = file.path.replace(/\\/g, "/"); // Đối với window
+        data.image = file.path;
+
+        const updatedJobImage = await jobService.uploadJobImage(data, jobId);
+        res.status(200).json(response(updatedJobImage));
+      } else {
+        throw new AppError(400, "Please upload a file");
+      }
+    } catch (error) {
+      next(error);
+    }
+  };
+};
+
 module.exports = {
   getJobs,
   getJobsWithPagination,
@@ -135,4 +161,5 @@ module.exports = {
   getMenuJobType,
   getJobTypeDetailByJobTypeId,
   getJobByJobTypeDetailId,
+  uploadJobImage,
 };
