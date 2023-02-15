@@ -1,5 +1,5 @@
 const { AppError } = require("../helpers/error");
-const { Job } = require("../models");
+const { Job, JobType, JobTypeDetail } = require("../models");
 
 const getJobs = async () => {
     try {
@@ -119,10 +119,81 @@ const getJobById = async (id) => {
     }
 };
 
+const getMenuJobType = async () => {
+    try {
+        const menuJobTypes = await Job.findAll({
+            include: [
+                {
+                    association: "lsJobTypeDetail",
+                    attributes: {
+                        exclude: [],
+                    },
+                    include: [
+                        {
+                            association: "lsJobType",
+                            attributes: {
+                                exclude: [],
+                            },
+                        }
+                    ]
+                },
+            ],
+            attributes: { exclude: ["rating", "price", "image", "description", "shortDescription", "jobStar", "jobTypeDetailId", "userId"] }
+        });
+        return menuJobTypes;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+const getJobTypeDetailByJobTypeId = async (id) => {
+    try {
+        const jobType = await JobTypeDetail.findByPk(id);
+        if (!jobType) {
+            throw new AppError(400, "Job type detail not found")
+        }
+
+        console.log("proto: ", jobType.__proto__);
+        const jobTypeDetail = await jobType.getJobTypeDetails({
+            include: "lsJobType"
+        });
+        if (jobTypeDetail.length) {
+            return jobTypeDetail
+        }
+        return false;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+const getJobByJobTypeDetailId = async (id) => {
+    try {
+        const jobTypeDetail = await JobType.findByPk(id);
+        if(!jobTypeDetail) {
+            throw new AppError(400, "Job type detail not found")
+        }
+        console.log("proto: ", jobTypeDetail.__proto__);
+        const jobs = await jobTypeDetail.getJobs();
+        if (jobs.length) {
+            return jobs
+        }
+        return false;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+
 module.exports = {
     getJobs,
     createJob,
     updateJob,
     deleteJob,
     getJobById,
+    getMenuJobType,
+    getJobTypeDetailByJobTypeId,
+    getJobByJobTypeDetailId,
 };

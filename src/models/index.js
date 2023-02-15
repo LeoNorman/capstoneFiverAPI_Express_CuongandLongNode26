@@ -31,11 +31,11 @@ Job.belongsTo(User, { as: "creator", foreignKey: "userId" });
 User.hasMany(Job, { as: "jobs", foreignKey: "userId" });
 
 // JobTypeDetail 1 - n Jobs
-Job.belongsTo(JobTypeDetail, { as: "jobTypeDetail", foreignKey: "jobTypeDetailId" });
+Job.belongsTo(JobTypeDetail, { as: "lsJobTypeDetail", foreignKey: "jobTypeDetailId" });
 JobTypeDetail.hasMany(Job, { as: "jobs", foreignKey: "jobTypeDetailId" });
 
 // JobType 1 - n JobTypeDetails
-JobTypeDetail.belongsTo(JobType, { as: "jobType", foreignKey: "jobTypeId" });
+JobTypeDetail.belongsTo(JobType, { as: "lsJobType", foreignKey: "jobTypeId" });
 JobType.hasMany(JobTypeDetail, { as: "jobTypeDetails", foreignKey: "jobTypeId" });
 
 // User 1 - n Comments
