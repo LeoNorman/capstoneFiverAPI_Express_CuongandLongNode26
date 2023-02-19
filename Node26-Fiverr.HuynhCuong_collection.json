@@ -1,0 +1,1222 @@
+{
+	"info": {
+		"_postman_id": "e4c6ca38-0268-413c-b8d8-a947fea0e966",
+		"name": "Node26-Fiverr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23736088"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/BanhmiPate/Desktop/319672704.jpg"
+								},
+								{
+									"key": "name",
+									"value": "long",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "long@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0987654321",
+									"type": "text"
+								},
+								{
+									"key": "birthday",
+									"value": "13/11/1983",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "text"
+								},
+								{
+									"key": "skill",
+									"value": "abc",
+									"type": "text"
+								},
+								{
+									"key": "certification",
+									"value": "def",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/users/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwNDA0OTAsImV4cCI6MTY3NjA4MzY5MH0.frfr8iR3oERePiMe_KlOJuJyUZQp60AowQ96vbknels",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/users?page=1&pageSize=2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "cu",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "ad",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwNDA0OTAsImV4cCI6MTY3NjA4MzY5MH0.frfr8iR3oERePiMe_KlOJuJyUZQp60AowQ96vbknels",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/users/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1b25nQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTY3NTI1MTIwNCwiZXhwIjoxNjc1Mjk0NDA0fQ.I_icLf3hXuyz7FUlPpIEMURGt7I2TnXIZ9ANCdRo4Qo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/users/6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzY0NzM0MzQsImV4cCI6MTY3NjUxNjYzNH0.Nn1E1yUzQfjN_Ap3LW11Fu0WDcsIlaCwJmxo1ttbcPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/BanhmiPate/Desktop/319672704.jpg"
+								},
+								{
+									"key": "name",
+									"value": "long",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "long@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/users/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User With Pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/users/get-user-pagination?page=1&pageSize=2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"get-user-pagination"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/users/search/cuong",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"search",
+								"cuong"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Avatar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzY0NzM0MzQsImV4cCI6MTY3NjUxNjYzNH0.Nn1E1yUzQfjN_Ap3LW11Fu0WDcsIlaCwJmxo1ttbcPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/BanhmiPate/Desktop/lem.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/users/upload-avatar",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"upload-avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"cuong@gmail.com\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/BanhmiPate/Desktop/thoi.jpg"
+								},
+								{
+									"key": "name",
+									"value": "lem2",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "lem2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "09876543211",
+									"type": "text"
+								},
+								{
+									"key": "birthday",
+									"value": "11/29/1991",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "text"
+								},
+								{
+									"key": "skill",
+									"value": "abc",
+									"type": "text"
+								},
+								{
+									"key": "certification",
+									"value": "def",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwNDU3NjQsImV4cCI6MTY3NjA4ODk2NH0.4exQBxHqXsEdJAvdFZ0KK_xMGZct7_snequ6oL2HnUc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/auth/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JobTyle",
+			"item": [
+				{
+					"name": "Get jobtyles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/job-types",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"job-types"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create JobTyle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYxMzMxNDgsImV4cCI6MTY3NjE3NjM0OH0.UR00JbiJEoPICyrZnAdHfk3_87FnMm1Iv1Wp59AFozc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"singer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/job-types",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"job-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Jobtyle By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/job-types/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"job-types",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update JobStyle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"streamer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/job-types/3",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"job-types",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete JobTyle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/job-types/4",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"job-types",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Job Types with Page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/job-types/get-jobType-pagination",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"job-types",
+								"get-jobType-pagination"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hire Job",
+			"item": [
+				{
+					"name": "HireJob",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"jobId\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/hire-job/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"hire-job",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get HiredJob",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/hire-job",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"hire-job"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get HiredJob by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/hire-job/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"hire-job",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update HiredJob",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"jobId\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/hire-job/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"hire-job",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hired Job By User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/hire-job/get-hiredjob-by-user",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"hire-job",
+								"get-hiredjob-by-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Job",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/hire-job/complete-job/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"hire-job",
+								"complete-job",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get HiredJob with page",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/hire-job/get-hiredJob-pagination?page=1&pageSize=2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"hire-job",
+								"get-hiredJob-pagination"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JobTypeDetail",
+			"item": [
+				{
+					"name": "Create JobTypeDetail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYxMzMxNDgsImV4cCI6MTY3NjE3NjM0OH0.UR00JbiJEoPICyrZnAdHfk3_87FnMm1Iv1Wp59AFozc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/BanhmiPate/Desktop/freb.jpg"
+								},
+								{
+									"key": "name",
+									"value": "cool",
+									"type": "text"
+								},
+								{
+									"key": "jobTypeId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/job-type-details",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"job-type-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Job Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzY0NzM0MzQsImV4cCI6MTY3NjUxNjYzNH0.Nn1E1yUzQfjN_Ap3LW11Fu0WDcsIlaCwJmxo1ttbcPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/jobTypeDetails/pagination?page=1&pageSize=3",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"jobTypeDetails",
+								"pagination"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get JobDetail By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/job-type-details/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"job-type-details",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Job Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/BanhmiPate/Desktop/thoii.jpg"
+								},
+								{
+									"key": "name",
+									"value": "lienquan",
+									"type": "text"
+								},
+								{
+									"key": "jobTypeId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/job-type-details/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"job-type-details",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Job Type Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzYwOTE0NTMsImV4cCI6MTY3NjEzNDY1M30.4Cv-fOv7reEGNxXUNsZ6zZMEXilqrnuSAcN7kbfbuNo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/job-type-details/4",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"job-type-details",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "Get Job with Pagination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzY0NzM0MzQsImV4cCI6MTY3NjUxNjYzNH0.Nn1E1yUzQfjN_Ap3LW11Fu0WDcsIlaCwJmxo1ttbcPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/jobs/pagination?page=1&pageSize=2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"pagination"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Job Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjdW9uZ0BnbWFpbC5jb20iLCJpYXQiOjE2NzY0NzM0MzQsImV4cCI6MTY3NjUxNjYzNH0.Nn1E1yUzQfjN_Ap3LW11Fu0WDcsIlaCwJmxo1ttbcPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/BanhmiPate/Desktop/cam_on.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/jobs/upload-jobImage/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"upload-jobImage",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
