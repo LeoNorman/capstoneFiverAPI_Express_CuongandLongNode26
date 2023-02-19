@@ -1,0 +1,918 @@
+{
+	"info": {
+		"_postman_id": "4aa6332b-d068-448b-9c23-28ebc5b1cb4f",
+		"name": "Fiverr-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23736082"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "getUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiI5ODk1ODY0NzU0NzVAZ21haWwuY29tIiwiaWF0IjoxNjc1NzUzNjE1LCJleHAiOjE2NzU3OTY4MTV9.9sdN7SDJr5JOvgrxlL5U1loJ4r7hcCOjfTNkZEsKNrk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"21321dsad@gmail.com\",\r\n        \"password\": \"123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/users",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJsaWVuQGdtYWlsLmNvbSIsImlhdCI6MTY3NTc1MzcwNywiZXhwIjoxNjc1Nzk2OTA3fQ.fEcjvQ7vM_6rbpWA0oKrmrek_lMnoZrGE2sqLsuLMoY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\": \"lien@gmail.com\",\r\n        \"password\": \"123123\",\r\n        \"username\": \"dsad12d21e21\",\r\n        \"age\": \"21\",\r\n        \"avatar\": \"321dsaddssdf\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/users/4",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJsaWVuQGdtYWlsLmNvbSIsImlhdCI6MTY3NTc1MzcwNywiZXhwIjoxNjc1Nzk2OTA3fQ.fEcjvQ7vM_6rbpWA0oKrmrek_lMnoZrGE2sqLsuLMoY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/users/1",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\": \"long@gmail.com\",\r\n        \"password\": \"123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/auth/login",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzU5NTEwNTQsImV4cCI6MTY3NTk5NDI1NH0.6oO_bQbtsbIjxdGE_aICQ7hjvjFGMwq7P94CKE6-Igk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\": \"long123@gmail.com\",\r\n        \"password\": \"123123\",\r\n        \"name\": \"dsad12d21e21\",\r\n        \"phone\": \"0123456789\",\r\n        \"birthday\": \"08/23/1999\",\r\n        \"gender\": \"male\",\r\n        \"role\": \"user\",\r\n        \"skill\": \"32121das\",\r\n        \"certification\": \"dsa12dsa\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/auth/register",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "getComments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzU5NTEwNTQsImV4cCI6MTY3NTk5NDI1NH0.6oO_bQbtsbIjxdGE_aICQ7hjvjFGMwq7P94CKE6-Igk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/comments",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzYwMTkzMDksImV4cCI6MTY3NjA2MjUwOX0.Ldhpqh6gf1aJQjxPIwphir-TGJ8CRfQoVl717aK_dUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"jobId\": 7,\r\n    \"content\": \"hehehehe\",\r\n    \"commentStar\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/comments",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzU5NTEwNTQsImV4cCI6MTY3NTk5NDI1NH0.6oO_bQbtsbIjxdGE_aICQ7hjvjFGMwq7P94CKE6-Igk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"jobId\": 1,\r\n    \"userId\": 11,\r\n    \"content\": \"21dsadasa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/comments/7",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzU5NTEwNTQsImV4cCI6MTY3NTk5NDI1NH0.6oO_bQbtsbIjxdGE_aICQ7hjvjFGMwq7P94CKE6-Igk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/comments/7",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCommentByJobId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzU5NTEwNTQsImV4cCI6MTY3NTk5NDI1NH0.6oO_bQbtsbIjxdGE_aICQ7hjvjFGMwq7P94CKE6-Igk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/comments/2",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "getJobs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzYwMTkzMDksImV4cCI6MTY3NjA2MjUwOX0.Ldhpqh6gf1aJQjxPIwphir-TGJ8CRfQoVl717aK_dUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobs",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createJob",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzYwMTkzMDksImV4cCI6MTY3NjA2MjUwOX0.Ldhpqh6gf1aJQjxPIwphir-TGJ8CRfQoVl717aK_dUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"name\": \"hehe\",\r\n            \"rating\": 3,\r\n            \"price\": 1000,\r\n            \"image\": null,\r\n            \"description\": null,\r\n            \"shortDescription\": null,\r\n            \"jobStar\": null,\r\n            \"jobTypeDetailId\": null\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobs",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatejob",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzYwMTkzMDksImV4cCI6MTY3NjA2MjUwOX0.Ldhpqh6gf1aJQjxPIwphir-TGJ8CRfQoVl717aK_dUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"name\": \"hoho\",\r\n            \"rating\": 3,\r\n            \"price\": 1000,\r\n            \"image\": \"ahahaa\",\r\n            \"description\": null,\r\n            \"shortDescription\": \"231asda\",\r\n            \"jobStar\": 123,\r\n            \"jobTypeDetailId\": null\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobs/7",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteJob",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzYwMTkzMDksImV4cCI6MTY3NjA2MjUwOX0.Ldhpqh6gf1aJQjxPIwphir-TGJ8CRfQoVl717aK_dUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobs/5",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getJobById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzYwMTkzMDksImV4cCI6MTY3NjA2MjUwOX0.Ldhpqh6gf1aJQjxPIwphir-TGJ8CRfQoVl717aK_dUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobs/11",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMenuJobTypes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsaWVuQGdtYWlsLmNvbSIsImlhdCI6MTY3NjI5NTA1OSwiZXhwIjoxNjc2MzM4MjU5fQ.WNz2ABt7hGK8zIZSRWm6M_3wvikbelTg8yImpEVK8AM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobs/get/menuJobTypes",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"get",
+								"menuJobTypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getJobTypeDetailByJobTypeId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsaWVuQGdtYWlsLmNvbSIsImlhdCI6MTY3NjQ1ODAxMiwiZXhwIjoxNjc2NTAxMjEyfQ.yWXcqn92O-kJJILuuzS68dOmfj4UIYH3FOvsZlZNHbc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobs/getJobTypeDetail/2",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"getJobTypeDetail",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getJobByJobTypeDetailId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsaWVuQGdtYWlsLmNvbSIsImlhdCI6MTY3NjQ1ODAxMiwiZXhwIjoxNjc2NTAxMjEyfQ.yWXcqn92O-kJJILuuzS68dOmfj4UIYH3FOvsZlZNHbc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobs/getJobByJobTypeDetailId/3",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobs",
+								"getJobByJobTypeDetailId",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JobTypeDetails",
+			"item": [
+				{
+					"name": "getJobTypeDetails",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzYxMjAxNjksImV4cCI6MTY3NjE2MzM2OX0.oA8GActcvgeLqwHpdsOyVFjXfV_m_9pi1cWLLCpLz4A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobTypeDetails",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobTypeDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createJobTypeDetail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoibGllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzYxMjAxNjksImV4cCI6MTY3NjE2MzM2OX0.oA8GActcvgeLqwHpdsOyVFjXfV_m_9pi1cWLLCpLz4A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"dsa1cxzcxz\",\r\n    \"image\": \"2131dsadsa\",\r\n    \"jobTypeId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobTypeDetails",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobTypeDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateJobTypeDetail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsaWVuQGdtYWlsLmNvbSIsImlhdCI6MTY3NjEyMzM5NCwiZXhwIjoxNjc2MTY2NTk0fQ.Iohx0XztOdBn0Vnmkwe90WzIHdEFhd8lUZcf9954ViA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"éadasdsasa\",\r\n    \"image\": \"2131dsadsa\",\r\n    \"jobTypeId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobTypeDetails/1",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobTypeDetails",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteJobTypeDetail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsaWVuQGdtYWlsLmNvbSIsImlhdCI6MTY3NjEyMzM5NCwiZXhwIjoxNjc2MTY2NTk0fQ.Iohx0XztOdBn0Vnmkwe90WzIHdEFhd8lUZcf9954ViA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobTypeDetails/3",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobTypeDetails",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getJobTypeDetailById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsaWVuQGdtYWlsLmNvbSIsImlhdCI6MTY3NjEyMzM5NCwiZXhwIjoxNjc2MTY2NTk0fQ.Iohx0XztOdBn0Vnmkwe90WzIHdEFhd8lUZcf9954ViA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soft-example-production.up.railway.app/api/v1/jobTypeDetails/2",
+							"protocol": "https",
+							"host": [
+								"soft-example-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"jobTypeDetails",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
